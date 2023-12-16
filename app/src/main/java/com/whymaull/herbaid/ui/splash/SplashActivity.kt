@@ -1,4 +1,4 @@
-package com.whymaull.herbaid
+package com.whymaull.herbaid.ui.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent

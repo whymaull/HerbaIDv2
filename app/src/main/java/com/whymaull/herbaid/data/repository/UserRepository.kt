@@ -12,21 +12,6 @@ class UserRepository private constructor(
     private val apiService: ApiService
 ) {
 
-//    fun getQuote(): LiveData<PagingData<Entities>> {
-//        userPreference.getSession()
-//        val user = runBlocking { userPreference.getSession().first() }
-//        @OptIn(ExperimentalPagingApi::class)
-//        return Pager(
-//            config = PagingConfig(
-//                pageSize = 9
-//            ),
-//            remoteMediator = RemoteMediatorStory(user.token,db, apiService),
-//            pagingSourceFactory = {
-//                db.storyDao().getListStoryPaging()
-//            }
-//        ).liveData
-//    }
-
     suspend fun saveSession(user: UserModel) {
         userPreferences.saveSession(user)
     }

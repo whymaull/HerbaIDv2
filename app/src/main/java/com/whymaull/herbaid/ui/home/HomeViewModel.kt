@@ -3,8 +3,9 @@ package com.whymaull.herbaid.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.whymaull.herbaid.data.repository.UserRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel (private val reps: UserRepository) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"

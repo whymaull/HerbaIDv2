@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        buildConfigField("String", "BASE_API_URL", "\"http://34.128.88.231:5000/\"")
+        buildConfigField("String", "BASE_API_URL", "\"http://34.101.62.116:5000/\"")
         applicationId = "com.whymaull.herbaid"
         minSdk = 29
         targetSdk = 34
@@ -66,4 +66,6 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

@@ -23,7 +23,7 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val notificationsViewModel =
-            ViewModelProvider(this).get(FavoriteViewModel::class.java)
+            ViewModelProvider(this)[FavoriteViewModel::class.java]
 
         _binding = FragmentFavoritBinding.inflate(inflater, container, false)
         val root: View = binding.root

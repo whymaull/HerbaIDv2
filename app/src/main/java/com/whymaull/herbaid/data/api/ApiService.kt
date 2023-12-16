@@ -17,7 +17,7 @@ import retrofit2.http.POST
 interface ApiService {
 
     @FormUrlEncoded
-    @POST("api/auth/signup")
+    @POST("/api/auth/signup")
     fun signUp(
         @Field("username") username: String,
         @Field("email") email: String,
@@ -25,40 +25,40 @@ interface ApiService {
     ) : Call<ResponseRegister>
 
     @FormUrlEncoded
-    @POST("api/auth/signin")
+    @POST("/api/auth/signin")
     fun signIn(
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<ResponseLogin>
 
-    @POST("api/auth/logout")
+    @POST("/api/auth/logout")
     fun logout(
         @Field("email") email: String,
         @Field("password") password: String
     ): ApiResponse
 
 
-    @POST("api/complaints")
+    @POST("/api/complaints")
     fun addComplaint(
         @Field("complaintType") complaintType: String
     ): Call<ComplaintResponse>
 
-    @POST("api/complaints/recommended")
+    @POST("/api/complaints/recommended")
     fun getRecommendedRecipes(
         @Field("complaintType") complaintType: String
     ): Call<RecommendedRecipesResponse>
 
-    @GET("api/recipes")
+    @GET("/api/recipes")
     fun getAllRecipes(
         @Header("Authorization") token: String,
     ): RecipesResponse
 
-    @GET("api/user/favorites")
+    @GET("/api/user/favorites")
     fun getFavoriteRecipes(
         @Header("Authorization") token: String,
     ): FavoriteRecipesResponse
 
-    @POST("api/user/favorites/add")
+    @POST("/api/user/favorites/add")
     fun addFavoriteRecipe(
         @Field("recipeId") recipeId: String
     ): ApiResponse
