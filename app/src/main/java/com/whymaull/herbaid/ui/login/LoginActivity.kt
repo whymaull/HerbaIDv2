@@ -32,52 +32,53 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initAction() {
         binding.loginButton.setOnClickListener {
-            val email = binding.emailEditText.text.toString().trim()
-            val pass = binding.passwordEditText.text.toString().trim()
-            when {
-                email.isBlank() -> {
-                    binding.emailEditText.requestFocus()
-                    binding.emailEditText.error = getString(R.string.error_empty_email)
-                }
-
-                !email.isEmailValid() -> {
-                    binding.emailEditText.requestFocus()
-                    binding.emailEditText.error = getString(R.string.error_invalid_email)
-                }
-
-                pass.isBlank() -> {
-                    binding.passwordEditText.requestFocus()
-                    binding.passwordEditText.error = getString(R.string.error_empty_password)
-                }
-
-                pass.length < 8 -> {
-                    binding.passwordEditText.requestFocus()
-                    binding.passwordEditText.error = getString(R.string.error_short_password)
-                }
-
-                else -> {
-                    viewModel.signIn(email, pass)
-                    viewModel.isMessage.observe(this) { isMessage ->
-                        Log.i("test", isMessage)
-                        if (isMessage == getString(R.string.berhasil)) {
-                            messageToast(getString(R.string.berhasil_login))
-                            viewModel.isMessageNUlL()
-                            startActivity(Intent(this, MainActivity::class.java))
-                            finish()
-
-                        }
-                        if (isMessage == getString(R.string.user_not_found)) {
-                            messageToast(getString(R.string.email_dan_password_tidak_terdaftar))
-                            viewModel.isMessageNUlL()
-
-                        }
-                        if (isMessage == getString(R.string.invalid_password)) {
-                            messageToast(getString(R.string.password_salah))
-                            viewModel.isMessageNUlL()
-                        }
-                    }
-                }
-            }
+            MainActivity.start(this)
+//            val email = binding.emailEditText.text.toString().trim()
+//            val pass = binding.passwordEditText.text.toString().trim()
+//            when {
+//                email.isBlank() -> {
+//                    binding.emailEditText.requestFocus()
+//                    binding.emailEditText.error = getString(R.string.error_empty_email)
+//                }
+//
+//                !email.isEmailValid() -> {
+//                    binding.emailEditText.requestFocus()
+//                    binding.emailEditText.error = getString(R.string.error_invalid_email)
+//                }
+//
+//                pass.isBlank() -> {
+//                    binding.passwordEditText.requestFocus()
+//                    binding.passwordEditText.error = getString(R.string.error_empty_password)
+//                }
+//
+//                pass.length < 8 -> {
+//                    binding.passwordEditText.requestFocus()
+//                    binding.passwordEditText.error = getString(R.string.error_short_password)
+//                }
+//
+//                else -> {
+//                    viewModel.signIn(email, pass)
+//                    viewModel.isMessage.observe(this) { isMessage ->
+//                        Log.i("test", isMessage)
+//                        if (isMessage == getString(R.string.berhasil)) {
+//                            messageToast(getString(R.string.berhasil_login))
+//                            viewModel.isMessageNUlL()
+//                            startActivity(Intent(this, MainActivity::class.java))
+//                            finish()
+//
+//                        }
+//                        if (isMessage == getString(R.string.user_not_found)) {
+//                            messageToast(getString(R.string.email_dan_password_tidak_terdaftar))
+//                            viewModel.isMessageNUlL()
+//
+//                        }
+//                        if (isMessage == getString(R.string.invalid_password)) {
+//                            messageToast(getString(R.string.password_salah))
+//                            viewModel.isMessageNUlL()
+//                        }
+//                    }
+//                }
+//            }
         }
         binding.tvToRegister.setOnClickListener {
             RegisterActivity.start(this)

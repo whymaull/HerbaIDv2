@@ -22,12 +22,12 @@ class ViewModelFactory (private val reps: UserRepository) : ViewModelProvider.Ne
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(reps) as T
             }
-            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
-                FavoriteViewModel(reps) as T
-            }
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(reps) as T
-            }
+//            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
+//                FavoriteViewModel(reps) as T
+//            }
+//            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+//                HomeViewModel(reps) as T
+//            }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(reps) as T
             }
