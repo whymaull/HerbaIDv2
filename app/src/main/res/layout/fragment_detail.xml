@@ -5,21 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".ui.detail.DetailFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgResepDetail"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="240dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"
         tools:ignore="ContentDescription"
         tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabBack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -31,17 +32,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton">
+        app:layout_constraintTop_toBottomOf="@+id/fabBack">
 
         <TextView
-            android:id="@+id/namaResep"
+            android:id="@+id/tvNamaResepDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -57,41 +58,44 @@
             android:textAlignment="center"/>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvPrepTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:drawablePadding="4dp"
             app:drawableStartCompat="@drawable/baseline_watch_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/namaResep"
+            app:layout_constraintTop_toBottomOf="@+id/tvNamaResepDetail"
             tools:text="12 Min" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tvBahanBahan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:drawablePadding="4dp"
             app:drawableStartCompat="@drawable/logolist"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPrepTime"
+            app:layout_constraintStart_toEndOf="@+id/tvPrepTime"
+            app:layout_constraintTop_toTopOf="@+id/tvPrepTime"
             app:layout_constraintVertical_bias="0.0"
             tools:text="4 Ingridients" />
 
         <TextView
+            android:id="@+id/tvSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="24dp"
             android:drawablePadding="4dp"
             app:drawableStartCompat="@drawable/baseline_favorite_border_24"
-            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintBottom_toBottomOf="@+id/tvBahanBahan"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
-            app:layout_constraintTop_toTopOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/tvBahanBahan"
+            app:layout_constraintTop_toTopOf="@+id/tvBahanBahan"
             tools:text="Save" />
 
 
@@ -103,27 +107,28 @@
         android:layout_marginTop="112dp"
         android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/floatingActionButton"
+        app:layout_constraintTop_toBottomOf="@id/fabBack"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvAllBahan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            android:text="@string/bahanResep"
             android:textSize="24sp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="32dp" />
+            tools:layout_editor_absoluteX="32dp"
+            tools:text="@string/bahanResep" />
 
         <TextView
+            android:id="@+id/tvCaraResep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/caraBuat"
             android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAllBahan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

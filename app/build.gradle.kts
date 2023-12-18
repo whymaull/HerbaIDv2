@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
     id("com.google.gms.google-services")
 
 }
@@ -10,7 +11,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        buildConfigField("String", "BASE_API_URL", "\"http://34.101.62.116:5000/\"")
+        buildConfigField("String", "BASE_API_URL", "\"https://herbaid-zf4tfuj7ya-uc.a.run.app/\"")
         applicationId = "com.whymaull.herbaid"
         minSdk = 29
         targetSdk = 34
@@ -70,6 +71,8 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
