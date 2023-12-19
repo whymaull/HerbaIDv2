@@ -1,15 +1,11 @@
 package com.whymaull.herbaid.data.repository
 
-import androidx.lifecycle.LiveData
-import com.whymaull.herbaid.data.api.ApiService
 import com.whymaull.herbaid.pref.UserModel
 import com.whymaull.herbaid.pref.UserPreferences
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.runBlocking
 
 class UserRepository private constructor(
-    private val userPreferences: UserPreferences,
-    private val apiService: ApiService
+    private val userPreferences: UserPreferences
 ) {
 
     suspend fun saveSession(user: UserModel) {
@@ -28,12 +24,11 @@ class UserRepository private constructor(
         @Volatile
         private var instance: UserRepository? = null
         fun getInstance(
-            apiService: ApiService,
-            token:String,
             userPreference: UserPreferences,
+            token: String,
         ): UserRepository =
             instance ?: synchronized(this) {
-                instance ?: UserRepository(userPreference,apiService)
+                instance ?: UserRepository(userPreference)
             }.also { instance = it }
     }
 

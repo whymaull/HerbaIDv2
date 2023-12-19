@@ -67,12 +67,11 @@ class RegisterActivity : AppCompatActivity() {
                 else -> {
                     viewModel.registerUser(name, email, pass)
                     viewModel.isMessage.observe(this) { isSuccess ->
-                        Log.i("sukses", "$isSuccess ")
-                        if (isSuccess == getString(R.string.success)) {
+                        Log.i("kalosukses", "$isSuccess ")
+                        if (isSuccess == null) {
                             messageToast(getString(R.string.message_register_success))
                             startActivity(Intent(this, LoginActivity::class.java))
                             finish()
-
 
                         } else if (isSuccess == getString(R.string.email_is_already_taken)) {
                             messageToast(getString(R.string.email_sudah_ada))

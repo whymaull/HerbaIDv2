@@ -81,4 +81,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.0")
 
+    implementation("com.google.code.gson:gson:2.10")
+
+
 }

@@ -9,6 +9,7 @@ import com.whymaull.herbaid.ui.detail.DetailViewModel
 import com.whymaull.herbaid.ui.favorit.FavoriteViewModel
 import com.whymaull.herbaid.ui.home.HomeViewModel
 import com.whymaull.herbaid.ui.login.LoginViewModel
+import com.whymaull.herbaid.ui.profile.ProfileViewModel
 import com.whymaull.herbaid.ui.splash.SplashViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -31,9 +32,9 @@ class ViewModelFactory (private val reps: UserRepository) : ViewModelProvider.Ne
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(reps) as T
             }
-//            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
-//                MapsViewModel(reps) as T
-//            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(reps) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

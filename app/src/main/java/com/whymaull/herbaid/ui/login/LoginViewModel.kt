@@ -1,6 +1,6 @@
 package com.whymaull.herbaid.ui.login
 
-import android.util.Log
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,75 +10,50 @@ import com.whymaull.herbaid.data.repository.UserRepository
 import com.whymaull.herbaid.data.response.ResponseLogin
 import com.whymaull.herbaid.pref.UserModel
 import kotlinx.coroutines.launch
-import org.json.JSONException
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel (private val reps: UserRepository) : ViewModel() {
+class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    fun saveSession(user: UserModel) {
-        viewModelScope.launch {
-            reps.saveSession(user)
-        }
-    }
+    private val _token = MutableLiveData<String?>()
+    val token: LiveData<String?> = _token
 
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
-
-    private val _isMessage = MutableLiveData<String>()
-    val isMessage: LiveData<String> = _isMessage
-
-    fun isMessageNUlL() {
-        _isMessage.value = ""
-    }
+    private val _loginError = MutableLiveData<String?>()
+    val loginError: LiveData<String?> = _loginError
 
     fun signIn(email: String, password: String) {
-        _isLoading.value = true
-
         val client = ApiConfig.getApiService().signIn(email, password)
 
         client.enqueue(object : Callback<ResponseLogin> {
-            override fun onResponse(
-
-                call: Call<ResponseLogin>,
-                response: Response<ResponseLogin>,
-            ) {
-                Log.i("SignupViewModel", "${response.code()}")
-
+            override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
                 if (response.isSuccessful) {
-
                     val appResponse = response.body()
-                    saveSession(UserModel(token = appResponse?.loginResult?.token!!, isLogin = true))
-                    Log.i(
-                        "LoginViewModel", "$appResponse"
-                    )
-                    _isLoading.value = false
-                    _isMessage.value = appResponse.message!!
-
-                } else {
-
-                    val str = response.errorBody()!!.string()
-                    try {
-                        val json = JSONObject(str)
-
-                        _isMessage.value =
-                            json.getString("message")
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
+                    if (appResponse != null) {
+                        saveSession(UserModel(token = appResponse.token ?: "", isLogin = true))
+                        _token.value = appResponse.token
+                        _loginError.value = null
+                    } else {
+                        _token.value = null
+                        _loginError.value = "Empty response body"
                     }
-
+                } else {
+                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                    _token.value = null
+                    _loginError.value = errorMessage
                 }
-
-                _isLoading.postValue(false)
             }
 
             override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
-                Log.e("SignupViewModel", "Gagal daftar: ${t.message}")
-                _isLoading.postValue(false)
+                _token.value = null
+                _loginError.value = "Network error"
             }
         })
     }
 
+    fun saveSession(user: UserModel) {
+        viewModelScope.launch {
+            userRepository.saveSession(user)
+        }
+    }
 }

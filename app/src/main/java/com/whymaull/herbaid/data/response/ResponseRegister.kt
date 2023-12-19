@@ -2,11 +2,11 @@ package com.whymaull.herbaid.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseRegister (
+data class ResponseRegister(
 
     @field:SerializedName("error")
-    val error: Boolean? = null,
+    val error: Boolean,
 
     @field:SerializedName("message")
-    val message: String? = null
+    val message: String
 )

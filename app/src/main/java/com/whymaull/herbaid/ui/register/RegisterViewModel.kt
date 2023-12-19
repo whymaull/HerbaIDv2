@@ -28,15 +28,16 @@ class RegisterViewModel : ViewModel() {
 
         client.enqueue(object : Callback<ResponseRegister> {
             override fun onResponse(
-
                 call: Call<ResponseRegister>,
                 response: Response<ResponseRegister>
             ) {
                 if (response.isSuccessful) {
                     val appResponse = response.body()
-                    Log.i("SignupViewModel", "$appResponse")
-                    _isMessage.value = appResponse?.message!!
-
+                    if (appResponse != null) {
+                        _isMessage.value = appResponse.message
+                    } else {
+                        _isMessage.value = "Null response received"
+                    }
                 } else {
                     val str = response.errorBody()!!.string()
                     try {
@@ -46,14 +47,10 @@ class RegisterViewModel : ViewModel() {
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
-
                 }
-
                 _isLoading.postValue(false)
             }
-
             override fun onFailure(call: Call<ResponseRegister>, t: Throwable) {
-                Log.e("SignupViewModel", "Gagal daftar: ${t.message}")
                 _isLoading.postValue(false)
             }
         })
