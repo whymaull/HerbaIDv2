@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/baseline_home_24"
-        android:title="@string/title_home" />
+        tools:ignore="MenuTitle" />
 
     <item
         android:id="@+id/navigation_resep"
         android:icon="@drawable/bookmark"
-        android:title="@string/title_resep" />
+        tools:ignore="MenuTitle" />
 
     <item
         android:id="@+id/navigation_favorit"
         android:icon="@drawable/baseline_favorite_border_24"
-        android:title="@string/title_favorite" />
+        tools:ignore="MenuTitle" />
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/baseline_person_24"
-        android:title="@string/title_profile" />
+        tools:ignore="MenuTitle" />
 
 </menu>
