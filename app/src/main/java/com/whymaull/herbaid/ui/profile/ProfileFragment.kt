@@ -2,6 +2,8 @@ package com.whymaull.herbaid.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +35,12 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val btnLogout = binding.btnLogout
+
+        val buttonText = btnLogout.text.toString()
+        val spannableString = SpannableString(buttonText)
+        spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 0)
+        btnLogout.text = spannableString
 
         binding.btnLogout.setOnClickListener {
             viewModel.logout()

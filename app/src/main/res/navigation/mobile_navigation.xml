@@ -18,11 +18,6 @@
         tools:layout="@layout/fragment_resep" />
 
     <fragment
-        android:id="@+id/navigation_favorit"
-        android:name="com.whymaull.herbaid.ui.favorit.FavoriteFragment"
-        android:label="@string/title_favorite"
-        tools:layout="@layout/fragment_favorit" />
-    <fragment
         android:id="@+id/navigation_profile"
         android:name="com.whymaull.herbaid.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
