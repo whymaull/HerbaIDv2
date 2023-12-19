@@ -52,5 +52,9 @@
     <string name="email_is_already_taken">Email is already taken</string>
     <string name="email_sudah_ada">Email Sudah digunakan</string>
     <string name="userFavorite">Favorit</string>
+    <string name="action_upload">Upload Gambar</string>
+    <string name="action_take_pict">Ambil Gambar</string>
+    <string name="article">Artikel</string>
+    <string name="scan_herbal">Pelajari tentang tanaman herbal dan jenisnya bersama HerbaID</string>
 
 </resources>

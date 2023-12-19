@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         viewModel.token.observe(this) { token ->
-            load(false) // Menyembunyikan ProgressBar setelah mendapat respons
+            load(false)
 
             if (!token.isNullOrBlank()) {
                 messageToast(getString(R.string.berhasil_login))
@@ -73,7 +73,6 @@ class LoginActivity : AppCompatActivity() {
         viewModel.loginError.observe(this) { errorMessage ->
             load(false)
             if (!errorMessage.isNullOrBlank()) {
-                // There is an error during login, display an error message
                 messageToast(errorMessage)
             }
         }
